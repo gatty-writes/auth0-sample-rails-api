@@ -41,3 +41,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'jwt', '~> 2.2', '>= 2.2.1'
+
+gem 'brakeman', '~> 4.6', '>= 4.6.1'
+
+gem 'httparty', '~> 0.17.0'
