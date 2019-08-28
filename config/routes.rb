@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   get 'auth/request_token'
   post 'signup', to: 'signup#signup'
   get 'auth/authorize'
+  get 'geocode', to: 'geocode#geocode'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

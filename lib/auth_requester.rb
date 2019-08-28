@@ -1,13 +1,15 @@
 
 class AuthRequester
-    attr_accessor :base_url
+    attr_accessor :base_url, :opts
 
   APP_BASE_URL_MAP = {
-    DH: Rails.application.credentials[Rails.env.to_sym][:auth0][:api_domian]
+    AUTH0: Rails.application.credentials[Rails.env.to_sym][:auth0][:api_domian],
+    MAP_BOX: Rails.application.credentials[Rails.env.to_sym][:mapbox][:base_url]
   }
 
-  def initialize(app)
+  def initialize(app, opts={})
     self.base_url = APP_BASE_URL_MAP[app.to_sym]
+    self.opts = opts
   end
 
   def get(rel_url)

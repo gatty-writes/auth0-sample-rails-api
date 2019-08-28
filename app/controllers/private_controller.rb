@@ -1,5 +1,5 @@
 class PrivateController < BaseController
- 	// Actions need to be secured must be added to the MUST_BE_SECURED constant array
+ 	# Actions need to be secured must be added to the MUST_BE_SECURED constant array
 
  	MUST_BE_SECURED = [:hello]	
   include Secured

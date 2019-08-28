@@ -9,9 +9,9 @@ class Signup < AuthRequester
 			email: params[:email],
 			password: params[:password],
 			username: params[:username],
-			connection: params[:connection]
+			connection: params[:connection],
+			user_metadata: params[:user_metadata]
 		}.to_json
-
 		post('/dbconnections/signup', body).parsed_response
 	end
 end

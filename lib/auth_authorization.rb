@@ -24,7 +24,6 @@ class AuthAuthorization < AuthRequester
 		  &connection=&redirect_uri=
 		  https://dev-0oix0qk9.us8.webtask.io/auth0-authentication-api-debugger
     HEREDOC
-
     get(url).parsed_response
   end
 
