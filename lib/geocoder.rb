@@ -19,15 +19,19 @@ class Geocoder < AuthRequester
 		url = "#{Rails.application.credentials[Rails.env.to_sym][:mapbox][:geocoding_sub_url]}#{opts[:query].gsub(" ", "%20")}.json?"
 		url.concat("access_token=#{Rails.application.credentials[Rails.env.to_sym][:mapbox][:access_token]}")
 		url.concat("&limit=#{opts[:limit]}&types=#{opts[:types]}&autocomplete=#{opts[:auto_complete]}")
-	
+		url.concat("&country=#{opts[:country]}")
+
 		res = get(url).parsed_response
 		format_matching_places res
 	end
 
 	private
 	def format_matching_places res
+		if( res.is_a?(Hash) && res.fetch('message'))
+			return { error: res.fetch('message') }
+		end
 		result_set = JSON.parse(res)['features'] || {}
-		return {} if result_set.length == 0
+		return [] if result_set.length == 0
 		result_set.each_with_object([]) { |key, col| col.push({place_name: key['place_name']}) }
 	end
 end
